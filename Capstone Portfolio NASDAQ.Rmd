@@ -18,8 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[Github Profile](https://www.github.com/Maelay)
-[Capstone Project](https://www.github.com/Maelay/Capstone-Project)
+[Github Profile](https://www.github.com/Maelay) [Capstone Project](https://www.github.com/Maelay/Capstone-Project)
 
 ------------------------------------------------------------------------
 
@@ -34,76 +33,61 @@ knitr::opts_chunk$set(
 
 ## ASK & PREPARE
 
-Description: This dataset contains information on more than 8,000 high-tech companies in the electronics, computers, telecommunications, and biotechnology sectors listed on the NASDAQ exchange in the United States.\
+Description: This dataset contains information on more than 8,000 high-tech companies in the electronics, computers, telecommunications, and biotechnology sectors listed on the NASDAQ exchange in the United States.
 
 #### Variables:
 
-1.  Symbol: A unique identifier for each company listed on the NASDAQ exchange. (String)\
-2.  Name: The name of the company. (String)\
-3.  Price: The current price of the company's stock. (Float)\
-4.  Pricing changes: The change in price from day-to-day. (Float)\
-5.  Pricing percentage changes: The percentage change in price from day-to-day. (Float)\
-6.  Sector: The sector the company belongs to. (String)\
-7.  Industry: The industry the company belongs to. (String)\
-8.  Market Capitalization: The market capitalization of the company. (Float)\
-9.  Share Volume: The amount of shares traded over 24 hours. (Integer)\
-10. Earnings per share: A measure of profitability.(Float)\
-11. Annualized Dividend: Total amount of money a company pays out to its shareholders in dividends over the course of a year.(Float)\
-12. Dividend pay date (Date)\
-13. Symbol yield: The dividend yield paid by companies over time. ()\
-14. Beta: The volatility index. (Float)\
-15. Errors: Any errors associated with data imputed related to these columns. (String)\
+1.  Symbol: A unique identifier for each company listed on the NASDAQ exchange. (String)
+2.  Name: The name of the company. (String)
+3.  Price: The current price of the company's stock. (Float)
+4.  Pricing changes: The change in price from day-to-day. (Float)
+5.  Pricing percentage changes: The percentage change in price from day-to-day. (Float)
+6.  Sector: The sector the company belongs to. (String)
+7.  Industry: The industry the company belongs to. (String)
+8.  Market Capitalization: The market capitalization of the company. (Float)
+9.  Share Volume: The amount of shares traded over 24 hours. (Integer)
+10. Earnings per share: A measure of profitability.(Float)
+11. Annualized Dividend: Total amount of money a company pays out to its shareholders in dividends over the course of a year.(Float)
+12. Dividend pay date (Date)
+13. Symbol yield: The dividend yield paid by companies over time. ()
+14. Beta: The volatility index. (Float)
+15. Errors: Any errors associated with data imputed related to these columns. (String)
 
 ### Business Tasks
 
-**Identify top-performing companies**:\
-Sort the data based on the highest percentage change in stock price or market capitalization to identify the top-performing companies. This could be useful for identifying potential investment opportunities or for analyzing market trends.
+**Identify top-performing companies**: Sort the data based on the highest percentage change in stock price or market capitalization to identify the top-performing companies. This could be useful for identifying potential investment opportunities or for analyzing market trends.
 
-\
 **Analyze pricing trends**:\
 Track the daily changes in stock prices and pricing percentage changes for each company listed on the NASDAQ exchange. By analyzing pricing trends, you can identify which companies are performing well and which ones are not, and make informed investment decisions.
 
-\
-**Analyze company size**:\
-Use the data on market capitalization to compare the size of different companies. This could be useful for identifying potential acquisition targets or for understanding market trends.
+**Analyze company size**: Use the data on market capitalization to compare the size of different companies. This could be useful for identifying potential acquisition targets or for understanding market trends.
 
-\
-**Conduct sector and industry analysis**:\
-Use the data on the sector and industry for each company to gain insights into which areas of the market are performing well and which ones are struggling. This information could be useful for investment decision-making or for identifying potential business opportunities.
+**Conduct sector and industry analysis**: Use the data on the sector and industry for each company to gain insights into which areas of the market are performing well and which ones are struggling. This information could be useful for investment decision-making or for identifying potential business opportunities.
 
-\
 **Compare sector and industry performance**:\
 Use the data on sector and industry to compare the performance of companies within the same sector or industry. This could help you identify which sectors or industries are outperforming others.
 
-\
 **Evaluate market capitalization**:\
 The data on market capitalization could be used to compare the size of different companies and identify potential investment opportunities.
 
-\
 **Monitor share volume**:\
 Use share volume data to understand the liquidity of each company's stock and identify potential investment opportunities.
 
-\
 **Track earnings per share and dividend payouts**:\
 Use this information to identify companies that are profitable and have a history of paying dividends to shareholders. This data could be useful for making investment decisions or for identifying potential acquisition targets.
 
-\
 **Track dividend growth**:\
 Track the annualized dividend data over time to see if the dividend payout has been increasing, decreasing, or staying the same. This could be useful for identifying companies with a strong track record of increasing their dividend payout.
 
-\
 **Calculate dividend yield**:\
 Use the data on annualized dividends and share price to calculate the dividend yield for each company. This could be useful for identifying potential investment opportunities for income-seeking investors.
 
-\
 **Evaluate volatility**:\
 The data on beta could be used to evaluate the volatility of each company's stock and identify potential investment opportunities or risks.
 
-\
 **Compare volatility**:\
 Compare the beta values of different companies to understand which ones are more volatile than others. This could be useful for identifying potential investment risks.
 
-\
 **Monitor for errors**:\
 Finally, monitor the errors column to identify any data imputation issues and take corrective action to ensure the accuracy of your analysis.
 
@@ -120,14 +104,12 @@ library(here)
 library(readr)
 ```
 
-\
 Creating data-frame `nasdaq_2022` from `2022_03_17_02_06_nasdaq.csv` using the read_csv() function.
 
 ```{r Dataframe}
 nasdaq_2022 <- read_csv("2022_03_17_02_06_nasdaq.csv")
 ```
 
-\
 Load R packages for cleaning.
 
 ```{r Tidy up}
@@ -139,14 +121,6 @@ library(lubridate)
 library(stringr)
 ```
 
-\
-Open the dataset in a new tab.
-
-```{r Tabview}
-view(nasdaq_2022)
-```
-
-\
 Show summaries of the overall dataset and data types.
 
 ```{r At a Glance}
@@ -156,14 +130,12 @@ head(nasdaq_2022)
 str(nasdaq_2022)
 ```
 
-\
 Checking and renaming columns.
 
 ```{r Column Names}
 colnames(nasdaq_2022)
 ```
 
-\
 Rename *[1] ...1* to *index_count* - Run previous code chunk to check column names.
 
 ```{r Re-name}
@@ -172,18 +144,16 @@ colnames(nasdaq_2022)[colnames(nasdaq_2022) == "...1"] <- "index_count"
 
 ## Data Validation & Transformation
 
-\
 **1. Data Type**\
 **2. Data Range**\
 **3. Data Constraint**\
 **4. Data Consistency**\
 **5. Data Structure**\
-**6. Code Validation**\
-\
-Note: Remove all instances of the (\$) symbol from a character string using the str_remove_all() function. Because \$ is a special character in regex that matches the end of a line.\
-Regular expressions (regex), backslashes () are used to escape special characters that have a specific meaning in the regex syntax. This means that if you want to match a literal backslash in a regex pattern, you need to escape it with another backslash, like (\\).\
+**6. Code Validation**
 
-\
+Note: Remove all instances of the ( \$) symbol from a character string using the str_remove_all() function. Because \$ is a special character in regex that matches the end of a line.\
+Regular expressions (regex), backslashes () are used to escape special characters that have a specific meaning in the regex syntax. This means that if you want to match a literal backslash in a regex pattern, you need to escape it with another backslash, like ( ).
+
 **Data type check**
 
 ```{r}
@@ -199,25 +169,21 @@ class(nasdaq_2022$dividend_pay_date)
 class(nasdaq_2022$symbol_yield)
 ```
 
-\
-
 ```{r}
 #Creating a clean dataframe from the original dataset.
 clean_nasdaq <- nasdaq_2022
 ```
 
-\
 **Convert Pricing Changes**
 
 ```{r}
-#Convert to numeric Remove + symbol with REGEX "\\+"
+#Convert to numeric Remove + symbol with REGEX "    +"
 clean_nasdaq <- clean_nasdaq %>%
-  mutate(pricing_changes = as.numeric(str_remove_all(pricing_changes, "\\+")))
+  mutate(pricing_changes = as.numeric(str_remove_all(pricing_changes, "    +")))
 
 class(clean_nasdaq$pricing_changes)
 ```
 
-\
 **Convert Pricing Percentage Changes**
 
 ```{r}
@@ -228,7 +194,6 @@ clean_nasdaq <- clean_nasdaq %>%
 class(clean_nasdaq$pricing_percentage_changes)
 ```
 
-\
 **Convert Market Capitalization**
 
 ```{r Mutate}
@@ -239,7 +204,6 @@ clean_nasdaq <- clean_nasdaq %>%
 class(clean_nasdaq$market_cap)
 ```
 
-\
 **Convert Share Volume**
 
 ```{r}
@@ -250,18 +214,16 @@ clean_nasdaq <- clean_nasdaq %>%
 class(clean_nasdaq$share_volume)
 ```
 
-\
 **Convert Earnings per Share**
 
 ```{r}
-# Remove $ symbol with REGEX \\ and convert to numeric.
+# Remove $ symbol with REGEX  \\ and convert to numeric.
 clean_nasdaq <- clean_nasdaq %>% 
   mutate(earnings_per_share = as.numeric(str_remove_all(earnings_per_share, "\\$")))
 
 class(clean_nasdaq$earnings_per_share)
 ```
 
-\
 **Convert Annualized Dividend**
 
 ```{r}
@@ -272,7 +234,6 @@ clean_nasdaq <- clean_nasdaq %>%
 class(clean_nasdaq$annualized_dividend)
 ```
 
-\
 **Dividend pay date**
 
 ```{r}
@@ -284,7 +245,6 @@ clean_nasdaq <- clean_nasdaq %>%
 class(clean_nasdaq$dividend_pay_date)
 ```
 
-\
 **Check and clean data into respective data variable types**
 
 ```{r My type}
@@ -322,7 +282,7 @@ earnings_per_share <- clean_nasdaq %>%
 
 ### Price / Earnings per share (P/E ratio)
 
-**Price-to-Earnings (P/E) Ratio** is a popular valuation metric that compares a company's current stock price to its earnings per share. A high P/E ratio may indicate that investors expect the company to experience strong growth in the future, while a low P/E ratio may indicate that investors have lower expectations for the company's growth potential.\
+**Price-to-Earnings (P/E) Ratio** is a popular valuation metric that compares a company's current stock price to its earnings per share. A high P/E ratio may indicate that investors expect the company to experience strong growth in the future, while a low P/E ratio may indicate that investors have lower expectations for the company's growth potential.
 
 ```{r}
 # Calculating P/E ratio and adding a new column.            
@@ -387,10 +347,14 @@ library(scales)
 # PLot Share/Stock Prices 
 clean_nasdaq_filtered <- subset(clean_nasdaq, price >= 2600 & price < 10000)
 
-ggplot(data = clean_nasdaq_filtered,aes(x = name, y = price)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + scale_y_continuous(labels = dollar_format(suffix = "USD", prefix = "", big.mark = ",", decimal.mark = "."))
+ggplot(data = clean_nasdaq_filtered,aes(x = reorder(name, -price), y = price)) + 
+  geom_bar(stat = "identity") + 
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format(suffix = "USD", prefix = "", big.mark = ",", decimal.mark = ".")) +
+  labs(title = "Most Expensive Stocks")
 ```
 
-#### Top 5 Expensive stock prices (\$ per share)
+#### Top 5 Expensive stock prices ( \$ per share)
 
 1.  Berkshire Hathaway = \$504,036
 2.  NVR, Inc = \$4,774
@@ -403,11 +367,12 @@ ggplot(data = clean_nasdaq_filtered,aes(x = name, y = price)) + geom_bar(stat = 
 ```{r}
 clean_nasdaq_filtered <- subset(clean_nasdaq, market_cap > 845708900000)
 
-ggplot(data = clean_nasdaq_filtered, aes(x = name, y = market_cap)) +
+ggplot(data = clean_nasdaq_filtered, aes(x = reorder(name, -market_cap), y = market_cap)) +
   geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  scale_y_continuous(labels = dollar_format(suffix = "USD", prefix = ",", big.mark = ",", decimal.mark = ".")) +
-  labs(x = "Name", y = "Market Capitalization")
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) +
+  scale_y_continuous(labels = dollar_format(suffix = "USD", prefix = "", big.mark = ",", decimal.mark = ".")) +
+  labs(title = "Highest Market Capitalization", x = "Name", y = "Market Capitalization")
+
 ```
 
 #### Top 5 Market Capitalization
@@ -416,18 +381,19 @@ ggplot(data = clean_nasdaq_filtered, aes(x = name, y = market_cap)) +
 2.  Microsoft Corp = \$2,143,429,000,000
 3.  Alphabet, Inc Class C = \$1,724,719,000,000
 4.  Alphabet, Inc Class A = \$1,718,962,000,000
-5.  Amazon.com, Inc = \$1,511,268,000,000\
+5.  Amazon.com, Inc = \$1,511,268,000,000
 
 ### Earnings per Share
 
 ```{r}
-clean_nasdaq_filtered <- subset(clean_nasdaq, earnings_per_share > 100)
+clean_nasdaq_eps <- subset(clean_nasdaq, earnings_per_share > 100)
 
-ggplot(data = clean_nasdaq_filtered,aes(x = name, y = earnings_per_share)) +
+ggplot(data = clean_nasdaq_eps, aes(x = reorder(name, -earnings_per_share), y = earnings_per_share)) +
   geom_bar(stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) +
   scale_y_continuous(labels = dollar_format(suffix = "USD", prefix = "", big.mark = ",", decimal.mark = ".")) +
-  labs(x = "Name", y = "Earnings per Share")
+  labs(title = "Highest Earnings per Share", x = "Name", y = "Earnings per Share")
+
 ```
 
 #### Top 5 Earnings per Share (EPS)
@@ -441,43 +407,44 @@ ggplot(data = clean_nasdaq_filtered,aes(x = name, y = earnings_per_share)) +
 ### Price to Earnings (P/E) ratio
 
 ```{r}
-clean_nasdaq_filtered <- subset(PE_ratio_df, PE_ratio > 0 & PE_ratio < 0.7)
+clean_nasdaq_filtered <- subset(clean_nasdaq, PE_ratio > 1500)
 
-ggplot(data = clean_nasdaq_filtered, aes(x= name, y = PE_ratio)) +
+ggplot(data = clean_nasdaq_filtered, aes(x= reorder(name, -PE_ratio), y = PE_ratio)) +
   geom_bar(stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = "Name", y = "P/E ratio")
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Highest P/E ratio",  x = "Name", y = "P/E ratio")
 ```
-  
+
 #### Lowest P/E ratio
 
-1. Macquarie Infrastructure = 0.12\
-2. Retail Value Inc. = 0.14\
-3. Navios Maritime = 0.54\
-4. Sonida Senior Living = 0.61\ 
-5. Sohu.com Limited = 0.68\
+1.  Macquarie Infrastructure = 0.12\
+2.  Retail Value Inc. = 0.14\
+3.  Navios Maritime = 0.54\
+4.  Sonida Senior Living = 0.61\
+5.  Sohu.com Limited = 0.68
 
-  
 ### Share Volume
+
 ```{r}
 share_volume_df <- subset(clean_nasdaq, share_volume > 110000000)
 
-ggplot(data = share_volume_df, aes(x = symbol, y = share_volume)) +
+ggplot(data = share_volume_df, aes(x = reorder(symbol, -share_volume) , y = share_volume)) +
   geom_bar(stat = "identity") + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = "Company Symbol", y = "Share Volume") +
+  theme(plot.title = element_text(hjust = 0.5), axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Highest Share Volumes", x = "Company Symbol", y = "Share Volume") +
   scale_y_continuous(labels = comma)
 
 ```
 
 #### Top 5 Share Volume
 
-1. Sonnet BioTherapeutics = 279,021,147\
-2. DiDi Global, Inc = 213,252,041\
-3. Mullen Automotive, Inc = 153,618,147\
-4. NIO, Inc* = 136,551,330\
-5. Alibaba Group* = 119,603,599\
-**NIO Inc. & Alibaba Group - American depository shares (Each representing one Class A ordinary share)*
+1. Sonnet BioTherapeutics = 279,021,147
+2. DiDi Global, Inc = 213,252,041
+3. Mullen Automotive, Inc = 153,618,147
+4. NIO, Inc* = 136,551,330
+5. Alibaba Group* = 119,603,599
+
+*NIO Inc. & Alibaba Group - American depository shares (Each representing one Class A ordinary share)
 
 ## ACT
 
